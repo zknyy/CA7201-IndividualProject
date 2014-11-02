@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MenuConfig>
+    <Displayers>
+        <Displayer name="Velocity" type="net.sf.navigator.displayer.VelocityMenuDisplayer"/>
+    </Displayers>
+    <Menus>
+        <Menu name="Home" title="home.title" page="/home" roles="ROLE_ADMIN,ROLE_USER"/>
+        <Menu name="UserMenu" title="menu.user" description="User Menu" page="/editProfile" roles="ROLE_ADMIN,ROLE_USER"/>
+        <Menu name="AdminMenu" title="menu.admin" description="Admin Menu" roles="ROLE_ADMIN" page="/admin/users">
+            <Item name="ViewUsers" title="menu.admin.users" page="/admin/users"/>
+            <Item name="ActiveUsers" title="home.activeUsers" page="/admin/activeUsers"/>
+            <Item name="ReloadContext" title="menu.admin.reload" page="/admin/reload"/>
+            <Item name="FileUpload" title="menu.selectFile" page="/selectFile"/>
+        </Menu>
+
+
+        <!-- add the Menu for Dynamic Form, by Liang Zhipeng-->
+        <Menu name="DynamicFormMenu" title="menu.dynamicForm" description="User Menu" page="/dynamicForm" roles="ROLE_ADMIN,ROLE_USER" >
+            <Item name="ViewAnswers" title="menu.answers" page="/answers"/>
+            <Item name="ViewQuestions" title="menu.questions" page="/questions"/>
+            <Item name="ViewTemplates" title="menu.templates" page="/templates"/>
+            <Item name="ViewFilledForms" title="menu.filledForms" page="/filledForms"/>
+        </Menu>
+        <!--end-->
+
+
+
+        <Menu name="Logout" title="user.logout" page="/logout" roles="ROLE_ADMIN,ROLE_USER"/>
+    </Menus>
+</MenuConfig>

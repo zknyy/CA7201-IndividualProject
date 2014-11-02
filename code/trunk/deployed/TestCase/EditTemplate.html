@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/" />
+<title>EditTemplate</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">EditTemplate</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/editTemplate?tid=${newTemplageID}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h2</td>
+	<td>Template Information</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=templateForm_template_name</td>
+	<td>test a new template</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=option[value=&quot;EDITABLE&quot;]</td>
+	<td>EDITABLE</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=templateForm_template_name</td>
+	<td>test a updating template</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=templateForm_template_status</td>
+	<td>label=LIVING</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=templateForm_button_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='content']/div</td>
+	<td>× Template has been updated successfully.</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=templateForm_template_name</td>
+	<td>test a updating template</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=option[value=&quot;LIVING&quot;]</td>
+	<td>LIVING</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=templateForm_button_cancel</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=TID</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=TID</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='template']/tbody/tr/td[2]</td>
+	<td>test a updating template</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=td.text-success</td>
+	<td>LIVING</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=Fill</td>
+	<td>Fill</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Discard</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPageToLoad</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Are you sure you want to discard this template?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=TID</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=TID</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='template']/tbody/tr/td[2]</td>
+	<td>test a updating template</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=td.text-warning</td>
+	<td>DISCARDED</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Dynamic Form</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Templates</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=View</td>
+	<td>View</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=Peek</td>
+	<td>Peek</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

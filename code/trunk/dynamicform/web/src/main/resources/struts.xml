@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Constants -->
+    <constant name="struts.devMode" value="false"/>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <constant name="struts.action.extension" value="action,"/>
+    <constant name="struts.objectFactory" value="spring"/>
+    <constant name="struts.custom.i18n.resources" value="ApplicationResources,errors"/>
+    <!-- extends the max size of upload file from 2097152 to 209715200, by Zhipeng Liang-->
+    <constant name="struts.multipart.maxSize" value="209715200"/>
+    <constant name="struts.ui.theme" value="css_xhtml"/>
+    <constant name="struts.codebehind.pathPrefix" value="/WEB-INF/pages/"/>
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+    <constant name="struts.convention.action.disableScanning" value="true"/>
+    <constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+    <!-- Allow <s:submit> to call method names directly -->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+
+
+    <!-- Actions in this package will be prefixed with /admin/ -->
+    <package name="admin" extends="default" namespace="/admin">
+        <action name="activeUsers" class="com.opensymphony.xwork2.ActionSupport">
+            <result name="success">/WEB-INF/pages/admin/activeUsers.jsp</result>
+        </action>
+
+        <action name="reload" class="uk.ac.le.student.zl91.webapp.action.ReloadAction">
+            <interceptor-ref name="adminCheck"/>
+            <!-- this should never be used, it's here to prevent warnings -->
+            <result name="success">/WEB-INF/pages/home.jsp</result>
+        </action>
+
+        <action name="users" class="userAction" method="list">
+            <interceptor-ref name="adminCheck"/>
+            <result name="success">/WEB-INF/pages/admin/userList.jsp</result>
+        </action>
+
+    </package>
+
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+        <interceptors>
+            <!-- Interceptor to handle allowing only admins to certain actions -->
+            <interceptor name="adminOnly" class="adminInterceptor"/>
+            <!-- Interceptor to handle accessDenied exceptions thrown from service/model layer called from within actions -->
+            <interceptor name="accessDenied" class="accessDeniedInterceptor"/>
+            <!-- Copied from struts-default.xml and changed validation exclude methods -->
+            <interceptor-stack name="defaultStack">
+                <interceptor-ref name="accessDenied"/>
+                <interceptor-ref name="exception"/>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="debugging"/>
+                <interceptor-ref name="profiling"/>
+                <interceptor-ref name="scopedModelDriven"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*</param>
+                </interceptor-ref>
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">cancel,execute,delete,edit,list</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+            </interceptor-stack>
+            <interceptor-stack name="fileUploadStack">
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+            <interceptor-stack name="adminCheck">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="adminOnly"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <global-results>
+            <result name="home" type="redirectAction">home</result>
+            <result name="dataAccessFailure">/WEB-INF/pages/dataAccessFailure.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="org.springframework.dao.DataAccessException" result="dataAccessFailure"/>
+        </global-exception-mappings>
+
+        <action name="home">
+            <result name="success">/WEB-INF/pages/home.jsp</result>
+        </action>
+
+        <action name="signup">
+            <result>/WEB-INF/pages/signup.jsp</result>
+        </action>
+
+        <action name="saveSignup" class="signupAction" method="save">
+            <result name="cancel" type="redirect">/</result>
+            <result name="input">/WEB-INF/pages/signup.jsp</result>
+            <result name="success" type="redirectAction">home</result>
+        </action>
+
+        <action name="editUser" class="userAction" method="edit">
+            <interceptor-ref name="adminCheck"/>
+            <result name="success">/WEB-INF/pages/userForm.jsp</result>
+            <result name="input">/WEB-INF/pages/admin/userList.jsp</result>
+        </action>
+
+        <action name="editProfile" class="userAction" method="edit">
+            <result name="success">/WEB-INF/pages/userForm.jsp</result>
+            <result name="error">/WEB-INF/pages/home.jsp</result>
+        </action>
+
+        <action name="saveUser" class="userAction" method="save">
+            <result name="cancel" type="redirectAction">admin/users</result>
+            <result name="input">/WEB-INF/pages/userForm.jsp</result>
+            <result name="success" type="redirectAction">admin/users</result>
+        </action>
+
+        <action name="selectFile" class="uk.ac.le.student.zl91.webapp.action.FileUploadAction">
+            <result name="success">/WEB-INF/pages/uploadForm.jsp</result>
+        </action>
+
+        <action name="uploadFile" class="uk.ac.le.student.zl91.webapp.action.FileUploadAction" method="upload">
+            <interceptor-ref name="fileUploadStack"/>
+            <result name="input">/WEB-INF/pages/uploadForm.jsp</result>
+            <result name="success">/WEB-INF/pages/uploadDisplay.jsp</result>
+            <result name="cancel" type="redirectAction">home</result>
+        </action>
+
+        <action name="passwordHint" class="passwordHintAction">
+            <result name="input">/</result>
+            <result name="success">/</result>
+        </action>
+
+        <!-- Add additional actions here -->
+        <!-- Actions added for dynamic form by Liang Zhipeng-->
+        <!-- answer model -->
+        <action name="answers" class="uk.ac.le.student.zl91.webapp.action.AnswerAction" method="list">
+            <result>/WEB-INF/pages/answerList.jsp</result>
+        </action>
+
+        <action name="editAnswer" class="uk.ac.le.student.zl91.webapp.action.AnswerAction" method="edit">
+            <result>/WEB-INF/pages/answerForm.jsp</result>
+            <result name="error">/WEB-INF/pages/answerList.jsp</result>
+        </action>
+
+        <action name="saveAnswer" class="uk.ac.le.student.zl91.webapp.action.AnswerAction" method="save">
+            <result name="input">/WEB-INF/pages/answerForm.jsp</result>
+            <result name="cancel" type="redirectAction">answers</result>
+            <result name="delete" type="redirectAction">answers</result>
+            <result name="success" type="redirectAction">answers</result>
+        </action>
+
+        <!-- question model -->
+        <action name="questions" class="uk.ac.le.student.zl91.webapp.action.QuestionAction" method="list">
+            <result>/WEB-INF/pages/questionList.jsp</result>
+        </action>
+
+        <action name="editQuestion" class="uk.ac.le.student.zl91.webapp.action.QuestionAction" method="edit">
+            <result>/WEB-INF/pages/questionForm.jsp</result>
+            <result name="error">/WEB-INF/pages/questionList.jsp</result>
+        </action>
+
+        <action name="saveQuestion" class="uk.ac.le.student.zl91.webapp.action.QuestionAction" method="save">
+            <result name="input">/WEB-INF/pages/questionForm.jsp</result>
+            <result name="cancel" type="redirectAction">questions</result>
+            <result name="delete" type="redirectAction">questions</result>
+            <result name="success" type="redirectAction">questions</result>
+        </action>
+
+        <!-- template model -->
+        <action name="templates" class="uk.ac.le.student.zl91.webapp.action.TemplateAction" method="list">
+            <result>/WEB-INF/pages/templateList.jsp</result>
+        </action>
+
+        <action name="editTemplate" class="uk.ac.le.student.zl91.webapp.action.TemplateAction" method="edit">
+            <result>/WEB-INF/pages/templateForm.jsp</result>
+            <result name="error">/WEB-INF/pages/templateList.jsp</result>
+        </action>
+
+
+        <action name="discardTemplate" class="uk.ac.le.student.zl91.webapp.action.TemplateAction" method="discard">
+            <result name="success" type="redirectAction">templates</result>
+        </action>
+
+        <action name="saveTemplate" class="uk.ac.le.student.zl91.webapp.action.TemplateAction" method="save">
+            <result name="input">/WEB-INF/pages/templateForm.jsp</result>
+            <result name="cancel" type="redirectAction">templates</result>
+            <result name="delete" type="redirectAction">templates</result>
+            <result name="success" type="redirectAction">templates</result>
+        </action>
+
+        <action name="viewTemplate" class="uk.ac.le.student.zl91.webapp.action.TemplateAction" method="view">
+            <result>/WEB-INF/pages/filledFormView.jsp</result>
+        </action>
+
+
+
+        <!-- filledForm model -->
+        <action name="filledForms" class="uk.ac.le.student.zl91.webapp.action.FilledFormAction" method="list">
+            <result>/WEB-INF/pages/filledFormList.jsp</result>
+        </action>
+
+
+        <action name="download" class="uk.ac.le.student.zl91.webapp.action.FilledFormAction" method="download">
+            <result></result>
+        </action>
+
+        <action name="editFilledForm" class="uk.ac.le.student.zl91.webapp.action.FilledFormAction" method="edit">
+            <result>/WEB-INF/pages/filledFormView.jsp</result>
+            <result name="error">/WEB-INF/pages/filledFormList.jsp</result>
+        </action>
+
+        <action name="reportFilledForm" class="uk.ac.le.student.zl91.webapp.action.FilledFormAction" method="report">
+            <result>/WEB-INF/pages/filledFormReport.jsp</result>
+            <result name="error">/WEB-INF/pages/filledFormList.jsp</result>
+        </action>
+
+        <action name="saveFilledForm" class="uk.ac.le.student.zl91.webapp.action.FilledFormAction" method="save">
+            <result name="input">/WEB-INF/pages/filledFormView.jsp</result>
+            <result name="success" type="redirectAction">templates</result>
+            <result name="cancel_templates" type="redirectAction">templates</result>
+            <result name="cancel_filledForms" type="redirectAction">filledForms</result>
+            <result name="delete" type="redirectAction">filledForms</result>
+        </action>
+
+    </package>
+</struts>

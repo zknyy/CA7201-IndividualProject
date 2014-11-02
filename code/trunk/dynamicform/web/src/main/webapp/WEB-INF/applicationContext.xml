@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       default-lazy-init="true">
+
+    <!-- Activates scanning of @Autowired -->
+    <context:annotation-config/>
+
+    <!-- Activates scanning of @Repository and @Service -->
+    <context:component-scan base-package="uk.ac.le.student.zl91"/>
+
+    <!-- Add new Beans here, by Zhipeng Liang -->
+
+    <!-- Add new DAOs here-->
+    <bean id="templateDao" class="org.appfuse.dao.hibernate.GenericDaoHibernate">
+        <constructor-arg value="uk.ac.le.student.zl91.model.Template"/>
+    </bean>
+    <bean id="filledFormDao" class="org.appfuse.dao.hibernate.GenericDaoHibernate">
+        <constructor-arg value="uk.ac.le.student.zl91.model.FilledForm"/>
+    </bean>
+    <bean id="responseDao" class="org.appfuse.dao.hibernate.GenericDaoHibernate">
+        <constructor-arg value="uk.ac.le.student.zl91.model.Response"/>
+    </bean>
+
+    <!-- Add new Managers here -->
+    <bean id="templateManager" class="org.appfuse.service.impl.GenericManagerImpl">
+        <constructor-arg ref="templateDao"/>
+        <!--
+        <constructor-arg>
+            <bean class="org.appfuse.dao.hibernate.GenericDaoHibernate" autowire="byType">
+                <constructor-arg value="uk.ac.le.student.zl91.model.Template"/>
+            </bean>
+        </constructor-arg>
+        -->
+    </bean>
+    <bean id="filledFormManager" class="org.appfuse.service.impl.GenericManagerImpl">
+        <constructor-arg ref="filledFormDao"/>
+    </bean>
+    <bean id="responseManager" class="org.appfuse.service.impl.GenericManagerImpl">
+        <constructor-arg ref="responseDao"/>
+    </bean>
+
+
+
+</beans>

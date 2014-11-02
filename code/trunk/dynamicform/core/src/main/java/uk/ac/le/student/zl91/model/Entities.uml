@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="638.0" y="599.1652767247915">uk.ac.le.student.zl91.model.Template</node>
+    <node x="418.0" y="40.0">uk.ac.le.student.zl91.model.Response</node>
+    <node x="1658.0" y="356.0">uk.ac.le.student.zl91.model.Answer</node>
+    <node x="741.0" y="883.6652767247915">uk.ac.le.student.zl91.model.TemplateStatus</node>
+    <node x="1118.0" y="419.0">uk.ac.le.student.zl91.model.Question</node>
+    <node x="152.21531463229718" y="590.1057619408643">uk.ac.le.student.zl91.model.FilledForm</node>
+    <node x="2029.931264611556" y="838.1311995122481">uk.ac.le.student.zl91.model.AnswerType</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="uk.ac.le.student.zl91.model.Answer" target="uk.ac.le.student.zl91.model.Response">
+      <point x="262.0" y="-40.0" />
+      <point x="2240.0" y="520.0" />
+      <point x="2240.0" y="160.0" />
+      <point x="182.0" y="0.0" />
+    </edge>
+    <edge source="uk.ac.le.student.zl91.model.Answer" target="uk.ac.le.student.zl91.model.Question">
+      <point x="0.0" y="204.0" />
+      <point x="1920.0" y="880.0" />
+      <point x="1320.0" y="880.0" />
+      <point x="0.0" y="141.0" />
+    </edge>
+    <edge source="uk.ac.le.student.zl91.model.Template" target="uk.ac.le.student.zl91.model.TemplateStatus">
+      <point x="0.0" y="99.0" />
+      <point x="0.0" y="-14.5" />
+    </edge>
+    <edge source="uk.ac.le.student.zl91.model.Question" target="uk.ac.le.student.zl91.model.Answer">
+      <point x="40.0" y="141.0" />
+      <point x="1360.0" y="840.0" />
+      <point x="1880.0" y="840.0" />
+      <point x="-40.0" y="204.0" />
+    </edge>
+    <edge source="uk.ac.le.student.zl91.model.Question" target="uk.ac.le.student.zl91.model.Template">
+      <point x="-40.0" y="141.0" />
+      <point x="1079.7725549658833" y="698.1652767247914" />
+      <point x="162.0" y="0.0" />
+    </edge>
+    <edge source="uk.ac.le.student.zl91.model.Response" target="uk.ac.le.student.zl91.model.Answer">
+      <point x="182.0" y="20.0" />
+      <point x="1920.0" y="180.0" />
+      <point x="0.0" y="-204.0" />
+    </edge>
+    <edge source="uk.ac.le.student.zl91.model.FilledForm" target="uk.ac.le.student.zl91.model.Template">
+      <point x="172.0" y="0.0" />
+      <point x="-162.0" y="0.0" />
+    </edge>
+    <edge source="uk.ac.le.student.zl91.model.FilledForm" target="uk.ac.le.student.zl91.model.Response">
+      <point x="172.0" y="-40.0" />
+      <point x="558.5595147839272" y="659.6057619408642" />
+      <point x="-40.0" y="120.0" />
+    </edge>
+    <edge source="uk.ac.le.student.zl91.model.Answer" target="uk.ac.le.student.zl91.model.AnswerType">
+      <point x="262.0" y="0.0" />
+      <point x="-47.0" y="0.0" />
+    </edge>
+    <edge source="uk.ac.le.student.zl91.model.Response" target="uk.ac.le.student.zl91.model.FilledForm">
+      <point x="-182.0" y="0.0" />
+      <point x="368.5367702805156" y="161.44048521607277" />
+      <point x="40.0" y="-109.5" />
+    </edge>
+    <edge source="uk.ac.le.student.zl91.model.Template" target="uk.ac.le.student.zl91.model.Question">
+      <point x="0.0" y="-99.0" />
+      <point x="800.0" y="560.0" />
+      <point x="-202.0" y="0.0" />
+    </edge>
+    <edge source="uk.ac.le.student.zl91.model.Question" target="uk.ac.le.student.zl91.model.Response">
+      <point x="-202.0" y="-40.0" />
+      <point x="600.0" y="520.0" />
+      <point x="0.0" y="120.0" />
+    </edge>
+    <edge source="uk.ac.le.student.zl91.model.Response" target="uk.ac.le.student.zl91.model.Question">
+      <point x="182.0" y="60.0" />
+      <point x="1320.0" y="220.0" />
+      <point x="0.0" y="-141.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5991425509110396" x="1196.0" y="456.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

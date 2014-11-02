@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/" />
+<title>updateFilledForm</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">updateFilledForm</td></tr>
+</thead><tbody>
+<tr>
+	<td>click</td>
+	<td>link=Dynamic Form</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Filled Forms</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h2</td>
+	<td>Filled Forms</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/editFilledForm?ffid=${newFilledFormID}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXT|Q_1-A_1</td>
+	<td>Firebug</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXTAREA|Q_2-A_2</td>
+	<td>Millstone Ln<br />Leicester LE1 5JN</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXT|Q_3-A_3</td>
+	<td>Peter Gardener</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXT|Q_4-A_4</td>
+	<td>pg@esb.eu.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXT|Q_5-A_5</td>
+	<td>07821738532</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXT|Q_6-A_6</td>
+	<td>Jane Messery</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXTAREA|Q_7-A_7</td>
+	<td>Norton House<br />Regent Rd<br />Leicester LE1 6YJ</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXT|Q_8-A_8</td>
+	<td>jane@hotmail.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXT|Q_9-A_9</td>
+	<td>0929818733</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXT|Q_10-A_10</td>
+	<td>Fri</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXT|Q_10-A_10</td>
+	<td>Fried chicken wings</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXT|Q_11-A_13</td>
+	<td>12</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXT|Q_11-A_12</td>
+	<td>04</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXT|Q_11-A_11</td>
+	<td>2014</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXT|Q_12-A_15</td>
+	<td>14</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXT|Q_12-A_14</td>
+	<td>00</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXT|Q_13-A_16</td>
+	<td>unknown</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXT|Q_14-A_17</td>
+	<td>on the sufface of the food</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=TEXTAREA|Q_15-A_18</td>
+	<td>Non</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=filledFormForm_button_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='content']/div</td>
+	<td>× FilledForm has been updated successfully.</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Dynamic Form</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Filled Forms</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/reportFilledForm?ffid=${newFilledFormID}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.row &gt; div.col-sm-12</td>
+	<td>Firebug</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='filledFormForm']/div[2]/div/div</td>
+	<td>Millstone Ln Leicester LE1 5JN</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='filledFormForm']/div[3]/div/div</td>
+	<td>Peter Gardener</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='filledFormForm']/div[4]/div/div</td>
+	<td>pg@esb.eu.com</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='filledFormForm']/div[5]/div/div</td>
+	<td>07821738532</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='filledFormForm']/div[6]/div/div</td>
+	<td>Jane Messery</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='filledFormForm']/div[7]/div/div</td>
+	<td>Norton House Regent Rd Leicester LE1 6YJ</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='filledFormForm']/div[8]/div/div</td>
+	<td>jane@hotmail.com</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='filledFormForm']/div[9]/div/div</td>
+	<td>0929818733</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='filledFormForm']/div[10]/div/div</td>
+	<td>Fried chicken wings</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.col-sm-1</td>
+	<td>12(DD)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='filledFormForm']/div[11]/div/div[2]</td>
+	<td>04(MM)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.col-sm-2</td>
+	<td>2014(YYYY)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='filledFormForm']/div[12]/div/div</td>
+	<td>14(HH)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='filledFormForm']/div[12]/div/div[2]</td>
+	<td>00(MM)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='filledFormForm']/div[13]/div/div</td>
+	<td>unknown</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='filledFormForm']/div[14]/div/div</td>
+	<td>on the sufface of the food</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='filledFormForm']/div[15]/div/div</td>
+	<td>Non</td>
+</tr>
+</tbody></table>
+</body>
+</html>

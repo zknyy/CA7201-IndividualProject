@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="AppFuse Modular Application - Web (Struts 2)"
+  id="myeclipse.1399239436949"
+  context-root="/dynamicform-web"
+  j2ee-spec="1.7"
+  archive="AppFuse Modular Application - Web (Struts 2).war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+

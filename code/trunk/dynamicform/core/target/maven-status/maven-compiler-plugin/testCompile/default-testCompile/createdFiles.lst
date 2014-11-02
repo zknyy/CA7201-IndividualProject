@@ -1,0 +1,9 @@
+uk\ac\le\student\zl91\dao\TemplateDaoTest.class
+uk\ac\le\student\zl91\dao\FilledFormDaoTest.class
+uk\ac\le\student\zl91\dao\ResponseDaoTest.class
+uk\ac\le\student\zl91\service\impl\QuestionManagerImplTest.class
+uk\ac\le\student\zl91\service\impl\FilledFormManagerImplTest.class
+uk\ac\le\student\zl91\dao\AnswerDaoTest.class
+uk\ac\le\student\zl91\service\impl\TemplateManagerImplTest.class
+uk\ac\le\student\zl91\dao\QuestionDaoTest.class
+uk\ac\le\student\zl91\service\impl\AnswerManagerImplTest.class
